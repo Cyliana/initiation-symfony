@@ -1,0 +1,52 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+<ol>
+    {% for personne in trainees|sort %}
+
+        {% if personne[1] <= ageLess %}
+        
+            <li>{{ personne[0]|capitalize }} a {{ personne[1] }} ans</li>
+
+        {% elseif personne[1] >= ageMore %}
+
+            <li>{{ personne[0]|upper }} a {{ personne[1] }} ans</li>
+        
+        {% else %}
+            
+            <li>{{ personne[0] }} a {{ personne[1] }} ans</li>
+
+        {% endif %}
+
+    {% endfor %}
+</ol>
+
+{% set dateNow  = "now"|date("d/m/Y H:i:s") %}
+
+<p> Nous sommes le {{ dateNow }} </p>
+
+{% include "test/_lorem.html.twig" with 
+    {
+        'color':'blue',
+        'length': trainees|length
+    } 
+%}
+
+{#================================================================ #}
+
+{% import "macros/example.html.twig" as example %}
+
+{% set name = trainees[random(0, trainees|length -1)][0] %}
+{% set character = random('ABC') %}
+{% set number = random(1,26) %}
+
+{{ example.concate(name,character,number) }}
+
+{{ example.makeform()}}
+
+{% endblock %}
+
+
+
+{#================================================================ #}

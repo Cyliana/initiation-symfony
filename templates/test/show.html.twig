@@ -1,0 +1,20 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{ parent()}}Liste des stagiaires{% endblock %}
+
+{% block body %}
+{#ceci est un ccommentaire#}
+<h1>Liste des stagiaires</p>
+<p> Vous avez {{ age }} ans.</p> 
+<p> redirection vers la page <a href="{{ path('home') }}">home</a></p>
+
+<ul>
+    {% for name in names %}
+        {% if name=="thierry" %}
+            <li>{{ name|upper }}</li>   
+        {% endif %}
+    {% endfor %}
+<ul>
+
+
+{% endblock %}

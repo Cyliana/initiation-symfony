@@ -1,3 +1,18 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+
+test:                     
+   path: /test                                         
+   controller: App\Controller\TestController::index    
+                                              
+home:                                                   # On indique le chemin d'accés au serveur #
+  path: /home                                           #fichier ciblée et nommé comme on veut 
+  controller: App\Controller\HomeController::index      # chemin d'accés au fichier et à la méthode
+
+homeDeux:
+  path: home/deux
+  controller: App\Controller\HomeController::show
+
+
+#Méthode pour indiquer le chemin d'accés avec le fichier YAML#
