@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des produits
+{% endblock %}
+
+{% block body %}
+
+<h1>Liste des produits</h1>
+
+{% for product in products %}
+
+	<div class="row row-cols-1 row-cols-md-3 g-4">
+		<div class="col">
+			<div class="card h-100">
+				<img src="{{ product.mainPicture }}" class="card-img-top" alt="...">
+				<div class="card-body">
+					<h5 class="card-title">Card title</h5>
+					<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+				</div>
+				<div class="card-footer">
+					<small class="text-muted">Last updated 3 mins ago</small>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<h2>{{ product.name }}</h2>
+	<p>{{ product.shortDescription|u.truncate(100,'...',false)}}</p>
+	<p>{{ product.price }}</p>
+	<p>{{ product.longDescription }}</p>
+	<p>{{ product.quantity }}</p>
+	<p>{{ product.visible }}</p>
+	<p>{{ product.createdAt|date("d/m/Y")}}</p>
+	<img src="{{ product.mainPicture }}"></img>{% endfor %}{% endblock %}

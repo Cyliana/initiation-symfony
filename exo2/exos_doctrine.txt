@@ -1,0 +1,54 @@
+- Créer des champs supplémentaires dans l'entité Product :
+- longDescription, text, not null
+- quantity, integer, not null
+- visible, boolean, not null
+- created_at, datetime (ATTENTION PAS DATETIME IMMUTABLE), not null
+- mainPicture, string, 255, not null
+
+
+
+- Ajouter les champs supplémentaires à la fixture
+Documentation de faker : https://fakerphp.github.io/
+- longDescription : paragraphe de 50 phrases
+- Quantity : nombre compris entre 1 et 50 
+- visible : booléen aléatoire
+- createdAt : un champ date heure alétoire dans l'année en cours
+- Utiliser la dépendance Faker-PicsumPhotos (elle va servir pour le champ MainPicture) : https://github.com/bluemmb/Faker-PicsumPhotos
+- mainPicture : une URL d'image aléatoire de 300x300 
+
+
+
+
+- Modifier le template product/index.html.twig pour afficher toutes les informations (sauf la longDescription) en utilisant Bootstrap (voir 1ère image)
+- Utiliser le composant card de Boostrap pour essayer de coller au plus près à l'image
+- N'afficher que les produits où visible est à true
+- La date doit être affiché au format fr
+- utliser le filtre u pour tronquer la shortDescription au 100 premiers caractères en terminant par ... et il faut que ça ne coupe pas un mot en plein milieu
+
+
+
+- Créer l'entité Category avec les champs suivants :
+- name, string, 255, not null
+- color, string, 255, not null
+- products, relation (appellez-moi pour cette étape)
+
+- Modifier la fixture pour créer 5 catégories
+- A chaque création de catégories => création de 10 produits de cette catégorie
+Documentation de faker-provider-collection : https://github.com/mbezhanov/faker-provider-collection
+- name : utiliser la doc pour trouver comment générer un nom de catégorie aléatoirement
+- color : les 5 couleurs correspondront à des couleurs Bootstrap (success, danger, warning, info et dark)
+
+- Modifier le template product/index.html.twig pour ajouter la catégorie avec le composant badge de Bootstrap
+
+- Pour l'url product/id, afficher un seul produit dans un nouveau template product/show.html.twig
+- Sur ce nouveau template, ajouter le nom et la longDescription (voir 2ème image)
+- Ajouter les liens de chaques pages de produits sur les boutons "plus de détails"
+
+
+CREER BASE DE DONNEES : symfony console doctrine:database:create
+CREER UNE ENTITE : symfont console make:entity
+CREER UNE MIGRATION : symfony console make:migration
+APPLIQUER LES MIGRATIONS : symfony console doctrine:migrations:migrate
+SUPPRIMER BASE DE DONNEES : symfony console doctrine:database:drop --force
+CHARGER FIXTURES : symfony console doctrine:fixtures:load
+
