@@ -40,13 +40,16 @@ Documentation de faker-provider-collection : https://github.com/mbezhanov/faker-
 
 - Modifier le template product/index.html.twig pour ajouter la catégorie avec le composant badge de Bootstrap
 
+
+
+
 - Pour l'url product/id, afficher un seul produit dans un nouveau template product/show.html.twig
 - Sur ce nouveau template, ajouter le nom et la longDescription (voir 2ème image)
 - Ajouter les liens de chaques pages de produits sur les boutons "plus de détails"
 
 
 CREER BASE DE DONNEES : symfony console doctrine:database:create
-CREER UNE ENTITE : symfont console make:entity
+CREER UNE ENTITE : symfony console make:entity
 CREER UNE MIGRATION : symfony console make:migration
 APPLIQUER LES MIGRATIONS : symfony console doctrine:migrations:migrate
 SUPPRIMER BASE DE DONNEES : symfony console doctrine:database:drop --force

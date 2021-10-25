@@ -1,35 +1,36 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des produits
-{% endblock %}
+{% block title %}Liste des produits{% endblock %}
 
 {% block body %}
 
-<h1>Liste des produits</h1>
+<h1 class="text-center my-5" >Liste des produits</h1>
+<div class="container">
+    <div class="row row-cols-sm-1 row-cols-md-3 g-4">
+        {% for product in products %}
+        {# {% if  product.visible == true %} #}
+            <div class="col">
+                <div class="card">
+                    <img src="{{ product.mainPicture }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <span class="badge rounded-pill bg-{{ product.category.color }}">{{product.category.name}}</span>
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text">{{ product.shortDescription|u.truncate(100,'...',false)}}</p>
+                        <a class="btn btn-primary" href="#" role="button">Plus de détails</a>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">{{ product.price }}</li>
+                        <li class="list-group-item">{{ product.quantity }} en stock</li>
+                    </ul>
+                    <div class="card-footer">
+                        <small class="text-muted">Ajouté le {{ product.createdAt|date("d/m/Y")}}</small>
+                    </div>
+                </div>
+            </div>
+        {# {% endif %} #}
+        {% endfor %}
+    </div>
+</div>
 
-{% for product in products %}
+{% endblock %}
 
-	<div class="row row-cols-1 row-cols-md-3 g-4">
-		<div class="col">
-			<div class="card h-100">
-				<img src="{{ product.mainPicture }}" class="card-img-top" alt="...">
-				<div class="card-body">
-					<h5 class="card-title">Card title</h5>
-					<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-				</div>
-				<div class="card-footer">
-					<small class="text-muted">Last updated 3 mins ago</small>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-	<h2>{{ product.name }}</h2>
-	<p>{{ product.shortDescription|u.truncate(100,'...',false)}}</p>
-	<p>{{ product.price }}</p>
-	<p>{{ product.longDescription }}</p>
-	<p>{{ product.quantity }}</p>
-	<p>{{ product.visible }}</p>
-	<p>{{ product.createdAt|date("d/m/Y")}}</p>
-	<img src="{{ product.mainPicture }}"></img>{% endfor %}{% endblock %}

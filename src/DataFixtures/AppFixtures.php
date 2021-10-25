@@ -2,12 +2,14 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Category;
 use Faker\Factory;
 use App\Entity\Product;
 use Bezhanov\Faker\Provider\Commerce;
 use Bluemmb\Faker\PicsumPhotosProvider;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+
 
 class AppFixtures extends Fixture
 {
@@ -16,25 +18,37 @@ class AppFixtures extends Fixture
 
         $faker = Factory::create();
         $faker->addProvider(new \Bezhanov\Faker\Provider\Commerce($faker));
-        
         $faker->addProvider(new \Bluemmb\Faker\PicsumPhotosProvider($faker));
 
-        for ($p=1; $p < 10 ; $p++) 
+        $colorCategory= ['success','danger','warning','info','dark'];
+
+        for ($c=0; $c < 5 ; $c++) 
         { 
-            $product = new Product();
+            $category = new Category();
 
-            $product-> setName($faker->productName())
-                    -> setShortDescription($faker->sentence(20))
-                    -> setPrice($faker->randomFloat(2,10,300))
-                    -> setLongDescription($faker->paragraph(50))
-                    -> setQuantity($faker->numberBetween(0,50))
-                    -> setVisible($faker->boolean())
-                    -> setCreatedAt($faker->dateTimeThisYear())
-                    -> setMainPicture($faker->imageUrl(300, 300));
+            $category-> setName($faker->word())
+                     -> setColor($colorCategory[$c]);
 
-            $manager->persist($product);            
-        }
-        $manager->flush();
+            $manager->persist($category);
+            
+            for ($p=1; $p < 10 ; $p++) 
+            { 
+                $product = new Product();
+
+                $product-> setName($faker->productName())
+                        -> setShortDescription($faker->sentence(20))
+                        -> setPrice($faker->randomFloat(2,10,300))
+                        -> setLongDescription($faker->paragraph(50))
+                        -> setQuantity($faker->numberBetween(0,50))
+                        -> setVisible($faker->boolean())
+                        -> setCreatedAt($faker->dateTimeThisYear())
+                        -> setMainPicture($faker->imageUrl(300, 300))
+                        -> setCategory($category);
+
+                $manager->persist($product);            
+            }
+            $manager->flush();
+        } 
     }
 }
 
