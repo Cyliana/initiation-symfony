@@ -16,7 +16,7 @@
                         <span class="badge rounded-pill bg-{{ product.category.color }}">{{product.category.name}}</span>
                         <h5 class="card-title">{{ product.name }}</h5>
                         <p class="card-text">{{ product.shortDescription|u.truncate(100,'...',false)}}</p>
-                        <a class="btn btn-primary" href="#" role="button">Plus de détails</a>
+                        <a class="btn btn-primary" href="{{ path('product_show',{'id' : product.id}) }}" role="button">Plus de détails</a>
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">{{ product.price }}</li>

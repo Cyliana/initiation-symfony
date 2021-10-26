@@ -8,13 +8,13 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 
- /**
-     * @Route("/product")
-     */
+/**
+ * @Route("/product", name="product_")
+ */
 class ProductController extends AbstractController
 {
     /**
-     * @Route("/", name="product_index")
+     * @Route("/", name="index")
      */
     public function index(ProductRepository $productRepository): Response
     {
@@ -23,6 +23,24 @@ class ProductController extends AbstractController
                 ['visible'=>true],
                 ['created_at'=>'DESC']
             ),
+        ]);
+    }
+
+    /**
+     * @Route("/{id}", name="show")
+     */
+    public function show($id, ProductRepository $productRepository) : response
+    {
+
+        $product = $productRepository->find($id);
+
+        if(!$product)
+        {
+            throw $this->createNotFoundException("Le produit n'existe pas !");
+        }
+
+        return $this->render('product/show.html.twig', [
+            "product" => $product,
         ]);
     }
 }

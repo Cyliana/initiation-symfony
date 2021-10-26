@@ -26,8 +26,8 @@ class AppFixtures extends Fixture
         { 
             $category = new Category();
 
-            $category-> setName($faker->word())
-                     -> setColor($colorCategory[$c]);
+            $category->setName($faker->department())
+                     ->setColor($colorCategory[$c]);
 
             $manager->persist($category);
             
@@ -35,15 +35,15 @@ class AppFixtures extends Fixture
             { 
                 $product = new Product();
 
-                $product-> setName($faker->productName())
-                        -> setShortDescription($faker->sentence(20))
-                        -> setPrice($faker->randomFloat(2,10,300))
-                        -> setLongDescription($faker->paragraph(50))
-                        -> setQuantity($faker->numberBetween(0,50))
-                        -> setVisible($faker->boolean())
-                        -> setCreatedAt($faker->dateTimeThisYear())
-                        -> setMainPicture($faker->imageUrl(300, 300))
-                        -> setCategory($category);
+                $product->setName($faker->productName())
+                        ->setShortDescription($faker->sentence(20))
+                        ->setPrice($faker->randomFloat(2,10,300))
+                        ->setLongDescription($faker->paragraph(50))
+                        ->setQuantity($faker->numberBetween(0,50))
+                        ->setVisible($faker->boolean())
+                        ->setCreatedAt($faker->dateTimeThisYear())
+                        ->setMainPicture($faker->imageUrl(300, 300, true))
+                        ->setCategory($category);
 
                 $manager->persist($product);            
             }
