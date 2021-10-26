@@ -35,15 +35,18 @@ class AppFixtures extends Fixture
             { 
                 $product = new Product();
 
+                $date = $faker->dateTimeThisYear();
+
                 $product->setName($faker->productName())
                         ->setShortDescription($faker->sentence(20))
                         ->setPrice($faker->randomFloat(2,10,300))
                         ->setLongDescription($faker->paragraph(50))
                         ->setQuantity($faker->numberBetween(0,50))
                         ->setVisible($faker->boolean())
-                        ->setCreatedAt($faker->dateTimeThisYear())
+                        ->setCreatedAt($date)
                         ->setMainPicture($faker->imageUrl(300, 300, true))
-                        ->setCategory($category);
+                        ->setCategory($category)
+                        ->setUpdateAt($date);
 
                 $manager->persist($product);            
             }

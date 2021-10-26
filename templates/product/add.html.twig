@@ -1,0 +1,16 @@
+{% extends "base.html.twig" %}
+
+{% block title %} Ajouter un produit {% endblock %}
+
+{% block body %}
+
+    <h1 class="text-center my-3">Ajouter un produit</h1>
+    <div class="container">
+        {{ form_start(formProduct) }}
+            {{ form_row(formProduct.shortDescription)}}
+            {{ form_row(formProduct.name)}}
+
+            <button type="submit" class="btn btn-primary">Ajouter le produit</button>    
+        {{ form_end(formProduct) }}
+    </div>
+{% endblock %}

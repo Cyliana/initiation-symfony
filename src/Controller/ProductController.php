@@ -2,10 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Product;
+use App\Form\ProductType;
 use App\Repository\ProductRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 
 /**
@@ -27,7 +30,7 @@ class ProductController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="show")
+     * @Route("/{id}", name="show", priority = -1)
      */
     public function show($id, ProductRepository $productRepository) : response
     {
@@ -43,4 +46,33 @@ class ProductController extends AbstractController
             "product" => $product,
         ]);
     }
+
+
+    /**
+     * @Route("/add", name="add", methods={"GET", "POST"})
+     */
+    public function add(Request $request)
+    {
+        $product = new Product();
+        $formProduct = $this-> createForm(ProductType::class, $product);
+        $formProduct->handleRequest($request);
+
+        if($formProduct->isSubmitted()&& $formProduct->isValid())
+        {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($product);
+            $entityManager->flush();
+
+            $this->addFlash('success','Le produit à été ajouté');
+
+            return $this->redirectToRoute('product_index');
+        }
+
+        return $this->renderForm('product/add.html.twig', [
+            'formProduct' => $formProduct
+        ]);
+    
+    }
+
+
 }
