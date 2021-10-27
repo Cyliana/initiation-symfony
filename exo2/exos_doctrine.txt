@@ -48,10 +48,10 @@ Documentation de faker-provider-collection : https://github.com/mbezhanov/faker-
 - Ajouter les liens de chaques pages de produits sur les boutons "plus de détails"
 
 
+SUPPRIMER BASE DE DONNEES : symfony console doctrine:database:drop --force
 CREER BASE DE DONNEES : symfony console doctrine:database:create
-CREER UNE ENTITE : symfony console make:entity
 CREER UNE MIGRATION : symfony console make:migration
 APPLIQUER LES MIGRATIONS : symfony console doctrine:migrations:migrate
-SUPPRIMER BASE DE DONNEES : symfony console doctrine:database:drop --force
 CHARGER FIXTURES : symfony console doctrine:fixtures:load
+CREER UNE ENTITE : symfony console make:entity
 

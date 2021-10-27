@@ -44,9 +44,10 @@ class AppFixtures extends Fixture
                         ->setQuantity($faker->numberBetween(0,50))
                         ->setVisible($faker->boolean())
                         ->setCreatedAt($date)
+                        ->setUpdatedAt($date)
                         ->setMainPicture($faker->imageUrl(300, 300, true))
-                        ->setCategory($category)
-                        ->setUpdateAt($date);
+                        ->setCategory($category);
+                        
 
                 $manager->persist($product);            
             }

@@ -4,13 +4,40 @@
 
 {% block body %}
 
-    <h1 class="text-center my-3">Ajouter un produit</h1>
-    <div class="container">
+<h1 class="text-center my-3">Ajouter un produit</h1>
+<div class="container">
+    <form class="row g-3">
         {{ form_start(formProduct) }}
-            {{ form_row(formProduct.shortDescription)}}
+        <div class="col-md-6">
             {{ form_row(formProduct.name)}}
+        </div>
+        <div class="col-md-6">
+             {{ form_row(formProduct.category)}}
+        </div>
+        <div class="col-md-4">
+            {{ form_row(formProduct.price)}}
+        </div>
+        <div class="col-md-4">    
+            {{ form_row(formProduct.quantity)}}
+        </div>
+        <div class="col-md-4">    
+            {{ form_row(formProduct.mainPicture)}}
+        </div>
 
-            <button type="submit" class="btn btn-primary">Ajouter le produit</button>    
+        {{ form_row(formProduct.shortDescription)}}
+        {{ form_row(formProduct.longDescription)}}
+     
+        <div class="col-12 d-flex justify-content-end">
+            {{ form_row(formProduct.visible)}}
+        </div>
+        
+        <div class"row">
+            <div class="col-12 d-flex justify-content-end">
+                <button type="submit" class="btn btn-primary">Ajouter le produit</button>
+            <div> 
+        </div>   
+
         {{ form_end(formProduct) }}
     </div>
+</div>    
 {% endblock %}

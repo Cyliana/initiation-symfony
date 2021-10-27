@@ -4,19 +4,37 @@
 
 Documentation des types de formulaires : https://symfony.com/doc/current/reference/forms/types.html
 - Compléter le formulaire ProductType pour ajouter les champs restants avec leur type sauf le created_at et le updated_at.
-longDescription : ajouter un label, un placeholder, la class form-control, 3 lignes, un style resize: none; et une class form-label pour le label
-price : ajouter un label, un placeholder, la class form-control, une class form-label pour le label et enlever le symbole €
+
+longDescription : ajouter un label, un placeholder, la class form-control, 3 lignes, un style resize: none; et une class form-label 
+
+
+
+label price : ajouter un label, un placeholder, la class form-control, une class form-label pour le label et enlever le symbole €
+
+
 quantity : ajouter un label, un placeholder, la class form-control, une class form-label pour le label et rendez sa form native HTML5 à cet input
+
+
 visible : ajouter un label, un placeholder, la class form-control, une class form-label pour le label et rendez le champ non obligatoire
+
+
 mainPicture : ajouter un label, un placeholder, la class form-control et une class form-label pour le label
-category : ajouter la class Category (entité Category), un label, un placeholder, la class form-control, une class form-label pour le label, une query_builder qui renvoit une fonction et qui retournera la requête pour classer les catégories par ordre alphabétique et un choice_label qui renvoit une fonction qui retournera les noms de catégories en majuscules 
+
+
+
+category : ajouter la class Category (entité Category), un label, un placeholder, la class form-control, une class form-label pour le label, une query_builder qui renvoit une fonction et qui retournera la requête pour classer les catégories par ordre alphabétique et un 
+
+
+choice_label qui renvoit une fonction qui retournera les noms de catégories en majuscules 
 
 
 Documentation des contraintes de validation : https://symfony.com/doc/current/reference/constraints.html
 - Ajouter les validations suivantes dans l'entité Product.
 longDescription : une taille comprise entre 20 et 300 caractère et un message pour chacune des valeurs de comparasion avec la valeur entrée par l'utilisateur (identique à shortDescription)
+
 price : une valeur positive supérieur à 0 et un message disant que la valeur n'est pas supérieur à 0
 quantity : idem à price
+
 mainPicture : une URL et un message indiquant que la photo principale doit être une URL valide
 
 - Compléter le template de création de produit avec les champs demandés en plus dans le formulaire selon les images 1 et 2 en utilisant les forms de Bootstrap.

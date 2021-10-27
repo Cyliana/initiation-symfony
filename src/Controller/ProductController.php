@@ -59,6 +59,9 @@ class ProductController extends AbstractController
 
         if($formProduct->isSubmitted()&& $formProduct->isValid())
         {
+            $product->setCreatedAt( new \DateTime());
+            $product->setUpdatedAt($product->getCreatedAt());
+            
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($product);
             $entityManager->flush();

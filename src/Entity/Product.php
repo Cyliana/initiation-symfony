@@ -26,22 +26,25 @@ class Product
 
     /**
      * @ORM\Column(type="text")
-     * @Assert\Length(min=20, max=300, minMessage="La description du produit doit avoir au moins {{ limit }} caractères.", maxMessage="La description du produit ne doit pas excéder {{ limit }} caractères.")
+     * @Assert\Length(min=20, max=200, minMessage="La description du produit doit avoir au moins {{ limit }} caractères.", maxMessage="La description du produit ne doit pas excéder {{ limit }} caractères.")
      */
     private $shortDescription;
 
     /**
      * @ORM\Column(type="float")
+     * @Assert\Positive(message="La valeur saisie n'est pas supérieur à 0 !")
      */
     private $price;
 
-    /**
+     /**
      * @ORM\Column(type="text")
+     * @Assert\Length(min=20, max=300, minMessage="La description du produit doit avoir au moins {{ limit }} caractères.", maxMessage="La description du produit ne doit pas excéder {{ limit }} caractères.")
      */
     private $longDescription;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Positive(message="Merci de renseigner une valeur supérieur à 0 !")
      */
     private $quantity;
 
@@ -52,11 +55,13 @@ class Product
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\DateTime
      */
     private $created_at;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Url(message="Merci de saisir une URL valide.")
      */
     private $mainPicture;
 
