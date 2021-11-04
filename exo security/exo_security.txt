@@ -1,0 +1,55 @@
+- Créer des champs supplémentaires en base de données pour la table User
+fullName: string, 255, not null
+adress: string, 255, null
+zipCode: string, 255, null
+city: string, 255, null
+country: string, 255, null
+phoneNumber: string, 255, null
+active: boolean, not null
+Dans l'entité, mettre false comme valeur par défaut pour active
+
+- Ajouter 1 utilisteur
+email : admin@mail.com
+password : password
+roles: admin
+fullName: Admin
+active : true
+Le reste restera vide.
+
+- Ajouter 5 utilisateurs
+email : user1@mail.com à user5@mail.com
+password : password
+roles: user
+city: Paris(user1), Lyon(user2), Marseille(user3), Bourg-en-Bresse(user4) et Bordeaux(user5)
+country: France
+Les champs restants devront être généré aléatoirement et localisé en français de france
+Vous devrier avoir une table dont le contenu ressemble à l'image 1
+
+- Créer un formulaire d'enregistrement avec l'entité User grâce à la console (make:registration-form) et qui ressemble à l'image 2
+MISE A JOUR : quand l'assistant vous demandera si vous voulez connecter automatiquement l'utilisateur après inscription, vous direz non, idem pour l'envoie de mail
+Seuls les champs de la première ligne et les conditions générales sont obligatoires
+
+- Créer une liste sous forme de tableau Bootstrap avec toutes les informations des utilisateurs, trier par nom, avec possibilité de les supprimer, sauf l'admin (image 5)
+Le champ active devra être un switch Bootstrap traités en Ajax (les fichiers js sont à mettre dans le dossier public).
+Vous aurez besoin de la commande suivante pour intégrer des fichiers js aux templates : composer require symfony/asset- 
+
+MISE A JOUR
+- Créer une page de profil pour l'utilisateur connecté, avec possibilité de l'éditer (image 3)
+- Les utilisateurs connectés pourront accéder à leur profil et le modifier
+- Seul l'admin pourra modifier le rôle dans ce formulaire (image 4)
+- Il sera impossible de sélectionner les deux rôles , quand l'un sera coché l'autre sera décoché
+
+MISE A JOUR : Sur le formulaire, empêcher l'utilisateur de se connecter si son compte n'est pas activé avec un message "Votre compte n'est pas activé !". Pour celà, vous allez avoir besoin d'un User Checker.
+
+- Seul l'admin pourra accéder à la création/édition/supression de produits et à la liste des utilisateurs 
+
+- Les utilisateurs non connectés ne verront que la liste des produits et le détail d'un produit
+
+- Créer une navbar Bootstrap accessible partout sur le site qui sera différente selon si c'est l'admin (image 6), les utilisateurs connectés (image 7) et les utilisateurs non connectés (image 8) 
+
+MISE A jour : l'image 6 a changé
+
+
+
+
+

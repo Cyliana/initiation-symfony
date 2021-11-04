@@ -1,7 +1,6 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Liste des produits{% endblock %}
-
 {% block body %}
 
 <h1 class="text-center my-5" >Liste des produits</h1>
@@ -20,6 +19,8 @@
                         <h5 class="card-title">{{ product.name }}</h5>
                         <p class="card-text">{{ product.shortDescription|u.truncate(100,'...',false)}}</p>
                         <a class="btn btn-primary" href="{{ path('product_show',{'id' : product.id}) }}" role="button">Plus de détails</a>
+                        <a class="btn btn-success" href="{{ path('product_add',{'id' : product.id}) }}"                         role="button">Ajouter</a>
+                        <a class="btn btn-danger" href="{{ path('product_edit',{'id' : product.id}) }}" role="button">Supprimer</a>
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">{{ product.price }}</li>

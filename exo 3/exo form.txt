@@ -39,7 +39,13 @@ mainPicture : une URL et un message indiquant que la photo principale doit être
 
 - Compléter le template de création de produit avec les champs demandés en plus dans le formulaire selon les images 1 et 2 en utilisant les forms de Bootstrap.
 
+
+
+
+
+
 - Créer un formulaire de modification de produit selon le même modèle que le formulaire de création (voir image 3) en reprenant le ProductType de ce dernier, avec un message de succès.
+
 - A la modification, la valeur de updated_at devra être la date du jour.
 - Les deux formulaires étant identiques, trouver une solution pour ne l'afficher qu'une seule fois dans vos templates, au lieu de l'avoir en double.
 

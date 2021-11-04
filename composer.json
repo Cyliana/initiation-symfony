@@ -73,6 +73,8 @@
         }
     },
     "require-dev": {
-        "doctrine/doctrine-fixtures-bundle": "^3.4"
+        "doctrine/doctrine-fixtures-bundle": "^3.4",
+        "symfony/stopwatch": "5.3.*",
+        "symfony/web-profiler-bundle": "5.3.*"
     }
 }
